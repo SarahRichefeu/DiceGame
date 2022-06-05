@@ -8,8 +8,6 @@ let globalScore0 = document.getElementById('player-0-global')
 let currentScore0 = document.querySelector('.current-0')
 let currentScore1 = document.querySelector('.current-1')
 
-let svg = document.querySelector(".hidden")
-
 const newGameBtn = document.getElementById('newGame')
 const rollBtn = document.getElementById('roll')
 const holdBtn = document.getElementById('hold')
@@ -45,14 +43,14 @@ newGame.addEventListener('click', () => {
 
 // Switching players
 function switchPlayer () {
-    document.querySelector('#player-0-panel').classList.toggle("active")
+    player0board.classList.toggle("active")
     player0.classList.toggle('active')
-    document.querySelector("#player-1-panel").classList.toggle("active")
+    document.getElementById('dot-0').classList.toggle('hidden')
+    player1board.classList.toggle("active")
     player1.classList.toggle('active')
+    document.getElementById('dot-1').classList.toggle('hidden')
     activePlayer = activePlayer === 0 ? 1 : 0
 }
-
-console.log(activePlayer)
 
 // Rolls dice
 rollBtn.addEventListener("click", () => {
