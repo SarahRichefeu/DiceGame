@@ -1,8 +1,8 @@
 // Get all the needed DOM
 let player0board = document.getElementById('player-0-panel')
 let player1board = document.getElementById('player-1-panel')
-let player0 = document.querySelector('.player-0-name')
-let player1 = document.querySelector('.player-1-name')
+let player0 = document.getElementById('player-0-name')
+let player1 = document.getElementById('player-1-name')
 let globalScore1 = document.getElementById('player-1-global')
 let globalScore0 = document.getElementById('player-0-global')
 let currentScore0 = document.querySelector('.current-0')
@@ -13,33 +13,35 @@ const rollBtn = document.getElementById('roll')
 const holdBtn = document.getElementById('hold')
 const dice = document.querySelector('img')
 
-globalScore0.innerHTML = 0
-globalScore1.innerHTML = 0
-currentScore0.innerHTML = 0
-currentScore1.innerHTML = 0  
-
-let currentScore = 0
-let scores = [0, 0]
-let playing = true
-let activePlayer = 0
+const svg = document.querySelector('.bi-dot')
 
 
-newGame.addEventListener('click', () => {
-
-    // Addind the names of the players when the user click on New Game
-    player0 = prompt('Entrez le nom du premier joueur: ') 
-    document.querySelector('.player-0-name').innerHTML = player0
-
-    player1 = prompt('Entrez le nom du deuxième joueur: ')
-    document.querySelector('.player-1-name').innerHTML = player1
-
-    //Reset settings 
+function reset () {
     globalScore0.innerHTML = 0
     globalScore1.innerHTML = 0
     currentScore0.innerHTML = 0
     currentScore1.innerHTML = 0
-})
+}
 
+reset()
+
+
+let currentScore = 0
+let playing = true
+let activePlayer = 0
+
+newGame.addEventListener('click', () => {
+
+    // Addind the names of the players when the user click on New Game
+   let player0 = prompt('Entrez le nom du premier joueur: ') 
+    document.querySelector('.player-0-name').innerText = player0
+
+   let player1 = prompt('Entrez le nom du deuxième joueur: ')
+    document.querySelector('.player-1-name').innerText = player1
+
+    //Reset settings 
+    reset()
+})
 
 // Switching players
 function switchPlayer () {
