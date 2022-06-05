@@ -15,32 +15,38 @@ const dice = document.querySelector('img')
 
 const svg = document.querySelector('.bi-dot')
 
+let scores = [0, 0]
+let currentScore = 0
+let activePlayer = 0
+let players = [player0, player1]
 
 function reset () {
     globalScore0.innerHTML = 0
     globalScore1.innerHTML = 0
     currentScore0.innerHTML = 0
     currentScore1.innerHTML = 0
+    scores = [0, 0]
+    currentScore = 0
 }
 
 reset()
 
-let scores = [0, 0]
-let currentScore = 0
-let activePlayer = 0
+
 
 newGame.addEventListener('click', () => {
 
     // Addind the names of the players when the user click on New Game
-   let player0 = prompt('Entrez le nom du premier joueur: ') 
+   const player0 = prompt('Entrez le nom du premier joueur: ') 
     document.querySelector('.player-0-name').innerText = player0
 
-   let player1 = prompt('Entrez le nom du deuxième joueur: ')
+   const player1 = prompt('Entrez le nom du deuxième joueur: ')
     document.querySelector('.player-1-name').innerText = player1
 
     //Reset settings 
     reset()
+    switchPlayer()
 })
+
 
 // Switching players
 function switchPlayer () {
@@ -89,11 +95,16 @@ holdBtn.addEventListener('click', () => {
     document.getElementById(`player-${activePlayer}-global`).textContent = scores[activePlayer]
     document.querySelector(`.current-${activePlayer}`).textContent = 0
     currentScore = 0
-    switchPlayer()
+
+    if (scores[activePlayer] >= 100) {
+        const myModal = new bootstrap.Modal(document.getElementById('myModal'), {})
+        const names = [player0.innerText, player1.innerText]
+        document.querySelector('.modal-title').innerText = "Congratulations " + names[activePlayer]
+        myModal.show()
+    } else {
+        switchPlayer()
+    }
 })
-
-
-
 // Dot 
 /*<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-dot" viewbox="0 0 16 16">
                     <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
