@@ -42,6 +42,10 @@ h1 {
     background-color: rgb(237, 223, 223);
 }
 
+.hidden {
+    display: none;
+}
+
 #player-0, #player-1 {
     width: 20vw;
     display: flex;

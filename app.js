@@ -8,12 +8,12 @@ let globalScore0 = document.getElementById('player-0-global')
 let currentScore0 = document.querySelector('.current-0')
 let currentScore1 = document.querySelector('.current-1')
 
+let svg = document.querySelector(".hidden")
+
 const newGameBtn = document.getElementById('newGame')
 const rollBtn = document.getElementById('roll')
 const holdBtn = document.getElementById('hold')
 const dice = document.querySelector('img')
-
-console.log(dice)
 
 globalScore0.innerHTML = 0
 globalScore1.innerHTML = 0
@@ -42,15 +42,17 @@ newGame.addEventListener('click', () => {
     currentScore1.innerHTML = 0
 })
 
+
 // Switching players
 function switchPlayer () {
-    player0board.classList.toggle("active")
-    player1board.classList.toggle("active")
+    document.querySelector('#player-0-panel').classList.toggle("active")
     player0.classList.toggle('active')
+    document.querySelector("#player-1-panel").classList.toggle("active")
     player1.classList.toggle('active')
     activePlayer = activePlayer === 0 ? 1 : 0
 }
 
+console.log(activePlayer)
 
 // Rolls dice
 rollBtn.addEventListener("click", () => {
@@ -63,11 +65,9 @@ rollBtn.addEventListener("click", () => {
 
     // Generate an random number between 1 and 6
     const randomNumber = Math.floor(Math.random() * 6) + 1
-    console.log(randomNumber)
 
     // Changing the dice image with the random number
     const diceImage = "images/dice-" + randomNumber + ".svg"
-    console.log(diceImage)
     setTimeout(() => {
         dice.setAttribute("src", diceImage)
     }, 1000)
@@ -78,7 +78,7 @@ rollBtn.addEventListener("click", () => {
         document.querySelector(`.current-${activePlayer}`).textContent = 0
         switchPlayer()
     } else {
-        currentScore = currentScore + randomNumber
+        currentScore += randomNumber
         document.querySelector(`.current-${activePlayer}`).textContent = currentScore
     }
 })
