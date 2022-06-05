@@ -25,9 +25,8 @@ function reset () {
 
 reset()
 
-
+let scores = [0, 0]
 let currentScore = 0
-let playing = true
 let activePlayer = 0
 
 newGame.addEventListener('click', () => {
@@ -83,11 +82,15 @@ rollBtn.addEventListener("click", () => {
     }
 })
 
-
-
-
-
-
+// Hold score
+holdBtn.addEventListener('click', () => {
+    //Get the current score and store it in global score
+    scores[activePlayer] += currentScore 
+    document.getElementById(`player-${activePlayer}-global`).textContent = scores[activePlayer]
+    document.querySelector(`.current-${activePlayer}`).textContent = 0
+    currentScore = 0
+    switchPlayer()
+})
 
 
 
