@@ -15,11 +15,15 @@ const dice = document.querySelector('img')
 
 const svg = document.querySelector('.bi-dot')
 
+
+// Default game settings
 let scores = [0, 0]
 let currentScore = 0
 let activePlayer = 0
 let players = [player0, player1]
 
+
+// Reset settings
 function reset () {
     globalScore0.innerHTML = 0
     globalScore1.innerHTML = 0
@@ -32,7 +36,7 @@ function reset () {
 reset()
 
 
-
+// Start a new game
 newGame.addEventListener('click', () => {
 
     // Addind the names of the players when the user click on New Game
@@ -77,7 +81,7 @@ rollBtn.addEventListener("click", () => {
         dice.setAttribute("src", diceImage)
     }, 1000)
 
-    // Condition: if it's 1, you loose
+    // Condition: if it's 1, you loose your current score and your turn
     if (randomNumber === 1) {
         currentScore = 0
         document.querySelector(`.current-${activePlayer}`).textContent = 0
@@ -88,7 +92,7 @@ rollBtn.addEventListener("click", () => {
     }
 })
 
-// Hold score
+// Hold current sctore to global score
 holdBtn.addEventListener('click', () => {
     //Get the current score and store it in global score
     scores[activePlayer] += currentScore 
@@ -96,11 +100,14 @@ holdBtn.addEventListener('click', () => {
     document.querySelector(`.current-${activePlayer}`).textContent = 0
     currentScore = 0
 
+
+    // Conditions to win the game
     if (scores[activePlayer] >= 100) {
         const myModal = new bootstrap.Modal(document.getElementById('myModal'), {})
         const names = [player0.innerText, player1.innerText]
-        document.querySelector('.modal-title').innerText = "Congratulations " + names[activePlayer]
+        document.querySelector('.modal-title').innerText = "Congratulations " + names[activePlayer] + " !"
         myModal.show()
+        reset()
     } else {
         switchPlayer()
     }
