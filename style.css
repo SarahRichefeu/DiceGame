@@ -136,3 +136,53 @@ img {
     font-weight: 400;
     text-align: center;
 }
+
+@media screen and (max-width: 700px) {
+    body {
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #body {
+        height: 90vh;
+        width: 90vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    #player-0-panel, #player-1-panel {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #player-0-name, #player-0-global, #player-1-name, #player-1-global {
+        font-size: 20px;
+    }
+
+    #player-0-round, #player-1-round {
+        width: 100px;
+    } 
+
+    p {
+        padding: 0;
+        margin: 0;
+    }
+
+    #buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    #newGame, #roll, #hold {
+        padding: 0;
+        font-size: 13px;
+    }
+
+    img {
+        width: 40px;
+        height: 40px;
+    }
+}
