@@ -157,8 +157,8 @@ img {
         flex-direction: row;
     }
 
-    #player-0-name, #player-0-global, #player-1-name, #player-1-global {
-        font-size: 20px;
+    #player-0-name, #player-0-global, #player-1-name, #player-1-global, p, #current-0, #current-1 {
+        font-size: 16px;
     }
 
     #player-0-round, #player-1-round {
@@ -178,7 +178,7 @@ img {
 
     #newGame, #roll, #hold {
         padding: 0;
-        font-size: 13px;
+        font-size: 12px;
     }
 
     img {
