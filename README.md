@@ -1,5 +1,5 @@
 Dice Game 
-Cliquez sur ce lien: https://agile-reef-16480.herokuapp.com/
+Cliquez sur ce lien: https://sarahrichefeu.github.io/DiceGame/
 
 C'est un projet que j'ai réalisé dans le cadre de ma formation avec Studi et Digital Campus Live. 
 
